@@ -1,0 +1,71 @@
+body {
+    align-items: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap:wrap;
+    align-items: center;
+    justify-content: center;
+}
+.white {
+    color:white;
+}
+
+.black {
+    color:black;
+}
+
+.gray {
+    color:gray;
+}
+
+.hightlight {
+    color:rgb(173, 16, 173);
+}
+
+.text-sm {
+    font-size:16px;
+}
+
+.text-md {
+    font-size:24px;
+}
+
+.text-lg {
+    font-size: 48px;
+}
+
+#nav-bar {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    gap:10px;
+}
+
+#card {
+    width: 600px;;
+    aspect-ratio: 1 / 0.5;
+    border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#upload-box {
+    margin: 20px;
+    width: 560px;
+    height:150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border:1px solid black;
+}
+
+#upload-file {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

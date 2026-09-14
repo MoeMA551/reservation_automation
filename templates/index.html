@@ -3,20 +3,24 @@
     <head>
         <title>Reservation Arragner</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <div>
-            <div>
-                <div>Logo</div>
-                <div>Hostel Reservation Arranger</div>
+        <div id="container">
+            <div id="nav-bar">
+                <div id="logo">Logo</div>
+                <div id="app_title" class="black text-md">Hostel Reservation Arranger</div>
             </div>
-            <div>Upload a reservation</div>
-            <div><p>Drop the raw booking export (.xlsx, .xls or .csv). Rooms and beds are assigned by arrival date, group size and gender, then returned as a formatted workbook.</p></div>
-            <div>
-                <input type="file" name="file" accept=".xlsx, .xls, .csv" required/>
+            <hr>
+            <div id="main-title" class="black text-lg">Upload A Reservation Sheet</div>
+            <div id="description" class="gray text-md"><p>Drop the raw booking export (.xlsx, .xls or .csv).</p></div>
+            <div id="card">
+                <div id="upload-box">
+                    <input id="upload-file" type="file" name="file" accept=".xlsx, .xls, .csv" required/>
+                </div>
                 <button class="btn" type="submit" id="submit-btn">
                     <i class="ph ph-play" id="submit-icon"></i>
-                    <span id="submit-label">Arrange reservations</span>
+                    <span id="submit-label" class="black text-md">Arrange reservations</span>
                 </button>
             </div>
         </div>
