@@ -15,13 +15,16 @@
             <div id="main-title" class="black text-lg">Upload A Reservation Sheet</div>
             <div id="description" class="gray text-md"><p>Drop the raw booking export (.xlsx, .xls or .csv).</p></div>
             <div id="card">
-                <div id="upload-box">
-                    <input id="upload-file" type="file" name="file" accept=".xlsx, .xls, .csv" required/>
-                </div>
-                <button class="btn" type="submit" id="submit-btn">
-                    <i class="ph ph-play" id="submit-icon"></i>
-                    <span id="submit-label" class="black text-md">Arrange reservations</span>
-                </button>
+                <form action="/process" method="post" enctype="multipart/form-data">
+                    <div id="upload-box">
+                        <input id="upload-file" type="file" name="file" accept=".xlsx, .xls, .csv" required/>
+                    </div>
+                    <div id="btn">
+                        <button class="btn text-md black" type="submit" id="submit-btn">
+                            Arrange reservations
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
