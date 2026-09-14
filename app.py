@@ -62,5 +62,5 @@ def process_file():
         download_name="modified_reservation.xlsx"
     )
 
-if __name__= "__main__":
+if __name__== "__main__":
     app.run(debug=True)
