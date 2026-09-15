@@ -19,6 +19,13 @@ def autofit_column(worksheet, data):
                       len(str(col)))#header length
         worksheet.column_dimensions[get_column_letter(i)].width = longest + 2
 
+#implement autosum feature
+def auto_sum(worksheet, data, column="amount"):
+    colum_letter = get_column_letter(data.columns.get_loc(column) + 1)
+    last_row = len(data) + 1
+    worksheet[f"{colum_letter}{last_row + 1}"] = f"=SUM({colum_letter}2:{colum_letter}{last_row})"
+    print(f"{colum_letter}{last_row + 1}")
+
 @app.route("/")
 def render():
     return render_template("index.html")
@@ -70,6 +77,7 @@ def process_file():
                 index=False
             )
             autofit_column(writer.sheets[sheet_name],site_data)
+            auto_sum(writer.sheets[sheet_name],site_data)
 
     #autodownloading the file
     return send_file(
