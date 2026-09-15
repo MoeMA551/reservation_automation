@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, send_file
 import pandas as pd 
 import os
 import re
-import openpyxl
+from openpyxl.utils import get_column_letter
 
 app = Flask(__name__)
 
@@ -11,6 +11,13 @@ OUTPUT_FOLDER = "outputs"
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
+
+#implement autofit_column feature
+def autofit_column(worksheet, data):
+    for i,col in enumerate(data.columns, start=1):
+        longest = max(data[col].astype(str).str.len().max(), #longest value in column
+                      len(str(col)))#header length
+        worksheet.column_dimensions[get_column_letter(i)].width = longest + 2
 
 @app.route("/")
 def render():
@@ -62,6 +69,7 @@ def process_file():
                 sheet_name=sheet_name,
                 index=False
             )
+            autofit_column(writer.sheets[sheet_name],site_data)
 
     #autodownloading the file
     return send_file(
