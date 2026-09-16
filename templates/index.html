@@ -13,11 +13,11 @@
             </div>
             <hr>
             <div id="main-title" class="black text-lg">Upload A Reservation Sheet</div>
-            <div id="description" class="gray text-md"><p>Drop the raw booking export (.xlsx, .xls or .csv).</p></div>
+            <div id="description" class="gray text-md"><p>Drop the raw booking export (.xlsx or .csv).</p></div>
             <div id="card">
                 <form action="/process" method="post" enctype="multipart/form-data">
                     <div id="upload-box">
-                        <input id="upload-file" type="file" name="file" accept=".xlsx, .xls, .csv" required/>
+                        <input id="upload-file" type="file" name="file" accept=".xlsx, .csv" required/>
                     </div>
                     <div id="btn">
                         <button class="btn text-md black" type="submit" id="submit-btn">

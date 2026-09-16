@@ -13,6 +13,18 @@ OUTPUT_FOLDER = "outputs"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
+#read .xlsx or .csv into a DataFrame
+def read_file(path):
+    ext = os.path.splitext(path)[1].lower()
+    if ext == ".xlsx":
+        return pd.read_excel(path)
+    if ext == ".csv":
+        try:
+            return pd.read_csv(path, encoding="utf-8-sig")
+        except UnicodeDecodeError:
+            return pd.read_csv(path, encoding="cp1252")
+    return None
+
 #implement autofit_column feature
 def autofit_column(worksheet, data):
     for i,col in enumerate(data.columns, start=1):
@@ -47,7 +59,7 @@ def process_file():
     file.save(input_path)
 
     #Reading data from uploaded excel file
-    df = pd.read_excel(input_path)
+    df = read_file(input_path)
 
     if "reservation site" not in df.columns:
         return "Error: 'reservation site' column was not found."
