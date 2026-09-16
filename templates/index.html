@@ -8,12 +8,12 @@
     <body>
         <div id="container">
             <div id="nav-bar">
-                <div id="logo">Logo</div>
-                <div id="app_title" class="black text-md">Hostel Reservation Arranger</div>
+                <div id="logo">LDK</div>
+                <div id="app_title" class="black text-md">オンライン決済照合自動化</div>
             </div>
             <hr>
-            <div id="main-title" class="black text-lg">Upload A Reservation Sheet</div>
-            <div id="description" class="gray text-md"><p>Drop the raw booking export (.xlsx, .xls or .csv).</p></div>
+            <div id="main-title" class="black text-lg">シートをアップロードしてください。</div>
+            <div id="description" class="gray text-md"><p>例えば、20260916155913.csv </p></div>
             <div id="card">
                 <form action="/process" method="post" enctype="multipart/form-data">
                     <div id="upload-box">
@@ -21,9 +21,10 @@
                     </div>
                     <div id="btn">
                         <button class="btn text-md black" type="submit" id="submit-btn">
-                            Arrange reservations
+                            完了
                         </button>
                     </div>
+                    <div id="btn-des" class="gray text-sm">「完了」ボタンを押してください。</div>
                 </form>
             </div>
         </div>
