@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_file
 import pandas as pd 
 import os
 import re
+from datetime import datetime
 from openpyxl.utils import get_column_letter
 
 app = Flask(__name__)
@@ -79,11 +80,13 @@ def process_file():
             autofit_column(writer.sheets[sheet_name],site_data)
             auto_sum(writer.sheets[sheet_name],site_data)
 
+    filename = f"{datetime.now():%m%d} TL.xlsx"
+
     #autodownloading the file
     return send_file(
     output_path,
     as_attachment=True,
-    download_name="modified_reservation.xlsx"
+    download_name= filename
     )
 
 if __name__== "__main__":
