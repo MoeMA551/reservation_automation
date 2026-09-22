@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, send_file
 import pandas as pd 
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from openpyxl.utils import get_column_letter
 
 app = Flask(__name__)
@@ -68,9 +68,9 @@ def process_file():
         return "Error: 'reservation site' column was not found."
 
     if sheet_type == "TL":
-        filename = f"{datetime.now():%m%d} TL.xlsx"
+        filename = f"{(datetime.now() - timedelta(days=1)):%m%d} TL.xlsx"
     elif sheet_type == "SB":
-        filename = f"{datetime.now():%m%d} SB.xlsx"
+        filename = f"{(datetime.now() - timedelta(days=1)):%m%d} SB.xlsx"
     
     output_path = os.path.join(
         OUTPUT_FOLDER,

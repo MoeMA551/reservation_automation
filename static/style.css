@@ -14,6 +14,10 @@ body {
     color:white;
 }
 
+.red {
+    color:red;
+}
+
 .black {
     color:black;
 }
@@ -81,4 +85,8 @@ body {
     display: flex;
     justify-content: center;
     margin-top:5px;
+}
+
+#warning {
+    margin-bottom: 10px;
 }
