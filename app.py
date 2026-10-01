@@ -16,8 +16,6 @@ os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 remove_sheetnames = ["クレジットカード", "現金"]
 
-japan_time = datetime.now(ZoneInfo("Asia/Tokyo"))
-
 #implement autofit_column feature
 def autofit_column(worksheet, data):
     for i,col in enumerate(data.columns, start=1):
@@ -70,6 +68,7 @@ def process_file():
     else:
         return "Error: 'reservation site' column was not found."
 
+    japan_time = datetime.now(ZoneInfo("Asia/Tokyo"))
     if sheet_type == "TL":
         filename = f"{(japan_time - timedelta(days=1)):%m%d} TL.xlsx"
         
