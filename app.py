@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import re
 from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 from openpyxl.utils import get_column_letter
 
 app = Flask(__name__)
@@ -14,6 +15,8 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
 remove_sheetnames = ["クレジットカード", "現金"]
+
+japan_time = datetime.now(ZoneInfo("Asia/Tokyo"))
 
 #implement autofit_column feature
 def autofit_column(worksheet, data):
@@ -68,10 +71,12 @@ def process_file():
         return "Error: 'reservation site' column was not found."
 
     if sheet_type == "TL":
-        filename = f"{(datetime.now() - timedelta(days=1)):%m%d} TL.xlsx"
+        filename = f"{(japan_time - timedelta(days=1)):%m%d} TL.xlsx"
+        
     elif sheet_type == "SB":
-        filename = f"{(datetime.now() - timedelta(days=1)):%m%d} SB.xlsx"
-    
+        filename = f"{(japan_time - timedelta(days=1)):%m%d} SB.xlsx"
+    print(japan_time)
+
     output_path = os.path.join(
         OUTPUT_FOLDER,
         filename
